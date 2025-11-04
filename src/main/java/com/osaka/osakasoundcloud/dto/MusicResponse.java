@@ -16,6 +16,7 @@ public class MusicResponse {
     private String album;
     private LocalDateTime releaseDate;
     private String genre;
+    private String comments;
     private LocalDateTime createdDate;
 
     public static MusicResponse from(Music music) {
@@ -26,6 +27,7 @@ public class MusicResponse {
                 .album(music.getAlbum())
                 .releaseDate(music.getReleaseDate())
                 .genre(music.getGenre())
+                .comments(music.getComments())
                 .createdDate(music.getCreatedDate())
                 .build();
     }
