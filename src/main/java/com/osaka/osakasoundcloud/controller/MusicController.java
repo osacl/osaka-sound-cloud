@@ -1,10 +1,12 @@
 package com.osaka.osakasoundcloud.controller;
 
 import com.osaka.osakasoundcloud.dto.MusicResponse;
+import com.osaka.osakasoundcloud.entity.Music;
 import com.osaka.osakasoundcloud.service.MusicService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,5 +23,12 @@ public class MusicController {
     @GetMapping
     public ResponseEntity<List<MusicResponse>> findAll() {
         return ResponseEntity.ok(musicService.findAll());
+    }
+
+    // 상세 조회
+    @GetMapping("/{id}")
+    public ResponseEntity<MusicResponse> findById(@PathVariable Long id) {
+        Music music = musicService.findById(id);
+        return ResponseEntity.ok(MusicResponse.from(music));
     }
 }
