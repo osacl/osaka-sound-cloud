@@ -1,10 +1,13 @@
 package com.osaka.osakasoundcloud.service;
 
 import com.osaka.osakasoundcloud.dto.MusicResponse;
+import com.osaka.osakasoundcloud.entity.Music;
 import com.osaka.osakasoundcloud.repository.MusicRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -32,5 +35,9 @@ public class MusicService {
                 //.map(music -> MusicResponse.from(music))
                 .map(MusicResponse::from)
                 .toList();
+    }
+
+    public Music findById(Long id) {
+        return musicRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "잘못된 번호입니다."));
     }
 }
