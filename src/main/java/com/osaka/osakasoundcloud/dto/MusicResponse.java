@@ -4,6 +4,7 @@ import com.osaka.osakasoundcloud.entity.Music;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Builder
@@ -14,7 +15,7 @@ public class MusicResponse {
     private String title;
     private String artist;
     private String album;
-    private LocalDateTime releaseDate;
+    private LocalDate releaseDate;
     private String genre;
     private String comments;
     private LocalDateTime createdDate;
