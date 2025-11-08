@@ -11,17 +11,46 @@
 
 <!--nav-->
 
-<p>Title: <span th:text="${music.title}">title</span></p>
-<p>Artist: <span th:text="${music.artist}">artist</span></p>
-<p>Album: <span th:text="${music.album}">album</span></p>
-<p>Release Date: <span th:text="${music.releaseDate}">release date</span></p>
-<p>Genre: <span th:text="${music.genre}">genre</span></p>
-<p>Comments: <span th:text="${music.comments}">comments</span></p>
+<div class="container p-5">
+    <p class="bs-primary-text-bg">Title <br><span th:text="${music.title}" class="fw-bold fs-3">title</span></p>
+    <p>Artist: <br><span th:text="${music.artist}" class="fw-bold fs-3">artist</span></p>
+    <p>Album: <br><span th:text="${music.album}" class="fw-bold fs-3">album</span></p>
+        <div class="row gx-5">
+            <div class="col-6">
+                <p>
+                    Release Date: <br><span th:text="${music.releaseDate}" class="fw-bold fs-3">release date</span>
+                </p>
+            </div>
+            <div class="col-6">
+                <p>
+                    Genre: <br><span th:text="${music.genre}" class="fw-bold fs-3">genre</span>
+                </p>
+            </div>
+        </div>
+
+    <p class="mb-0">Comments: </p><br>
+    <div class="bg-light border border-secondary rounded p-3">
+        <span th:text="${music.comments}">comments</span>
+    </div>
+
+    <br>
+
+    <div class="d-flex justify-content-start mb-2">
+        <div class="p-2 bg-light rounded shadow-sm">
+            <span th:text="${music.comments}">comments</span>
+        </div>
+    </div>
+
+    <div class="text-end">
+        <button class="btn btn-outline-secondary me-2">Edit</button>
+        <button class="btn btn-outline-secondary">Delete</button>
+    </div>
+
+
+</div>
+
+
 
 
 </body>
-
-
-<button>Edit</button>
-<button>Delete</button>
 </html>
