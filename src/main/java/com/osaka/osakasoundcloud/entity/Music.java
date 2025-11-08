@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Builder
@@ -29,7 +29,7 @@ public class Music extends BaseEntity {
     @Column(nullable = false, length = 100)
     private String album;
 
-    private LocalDateTime releaseDate;
+    private LocalDate releaseDate;
 
     @Column(nullable = false, length = 100)
     private String genre;

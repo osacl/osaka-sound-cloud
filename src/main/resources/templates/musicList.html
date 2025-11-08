@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OsakaSoundCloud</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+
+<!--nav-->
+
+<main class="container mt-5">
+    <header>
+        <h2>My Sound Cloud 🎧</h2>
+    </header>
+
+    <section>
+        <article>
+            <table class="table table-hover caption-top table-responsive">
+                <thead class="table-secondary">
+                <tr>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Album</th>
+                    <th>Release Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--리스트 없을 때-->
+                <tr th:if="${musics.size()} == 0">
+                    <td colspan="4" class="text-center py-5 text-muted">
+                        🎵 No Contents
+                    </td>
+                </tr>
+
+                <!--리스트 있을 때-->
+                <tr th:if="${musics.size()} > 0"
+                    th:each="music : ${musics}"
+                    th:onclick="|location.href='/musics/${music.id}'|"
+                    style="cursor:pointer;">
+                    <td th:text="${music.title}">Title</td>
+                    <td th:text="${music.artist}">Artist</td>
+                    <td th:text="${music.album}">Album</td>
+                    <td th:text="${music.releaseDate}">2025.11.07</td>
+                </tr>
+                </tbody>
+            </table>
+        </article>
+    </section>
+</main>
+</body>
+</html>
