@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OsakaSoundCloud</title>
+<!-- 상세조회면 title 이름도 바뀌어야할까요?-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+
+<!--nav-->
+
+<p>Title: <span th:text="${music.title}">title</span></p>
+<p>Artist: <span th:text="${music.artist}">artist</span></p>
+<p>Album: <span th:text="${music.album}">album</span></p>
+<p>Release Date: <span th:text="${music.releaseDate}">release date</span></p>
+<p>Genre: <span th:text="${music.genre}">genre</span></p>
+<p>Comments: <span th:text="${music.comments}">comments</span></p>
+
+
+</body>
+
+
+<button>Edit</button>
+<button>Delete</button>
+</html>

@@ -19,16 +19,16 @@ public class MusicController {
 
     private final MusicService musicService;
 
-    // 전체 조회
+    // 전체 조회 -
     @GetMapping
     public ResponseEntity<List<MusicResponse>> findAll() {
         return ResponseEntity.ok(musicService.findAll());
     }
 
     // 상세 조회
-    @GetMapping("/{id}")
-    public ResponseEntity<MusicResponse> findById(@PathVariable Long id) {
-        Music music = musicService.findById(id);
-        return ResponseEntity.ok(MusicResponse.from(music));
-    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<MusicResponse> findById(@PathVariable Long id) {
+//        Music music = musicService.findById(id);
+//        return ResponseEntity.ok(MusicResponse.from(music));
+//    }
 }
