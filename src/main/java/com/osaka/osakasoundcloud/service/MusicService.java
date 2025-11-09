@@ -39,7 +39,7 @@ public class MusicService {
 
     public MusicResponse findById(Long id) {
         Music music = musicRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "존재하지 않는 음악 ID입니다. id:"+id));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "존재하지 않는 음악 ID입니다. id:" + id));
         return MusicResponse.from(music);
     }
 }
