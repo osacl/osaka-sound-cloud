@@ -29,12 +29,6 @@
         </div>
 
     <p class="mb-0">Comments: </p><br>
-    <div class="bg-light border border-secondary rounded p-3">
-        <span th:text="${music.comments}">comments</span>
-    </div>
-
-    <br>
-
     <div class="d-flex justify-content-start mb-2">
         <div class="p-2 bg-light rounded shadow-sm">
             <span th:text="${music.comments}">comments</span>
@@ -42,12 +36,85 @@
     </div>
 
     <div class="text-end">
-        <button class="btn btn-outline-secondary me-2">Edit</button>
+        <button class="btn btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
         <button class="btn btn-outline-secondary">Delete</button>
     </div>
 
 
 </div>
+
+
+<!-- 수정 모달 -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-secondary-subtle">
+                <h3 class="modal-title fw-bold ms-3 my-2">Edit</h3>
+                <button type="button" class="btn-close me-1" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                    <!--
+                    <form th:action="@{|/musics/${music.id}|}" method="post" th:object="${music}">
+                    -->
+                    <form th:action="@{/musics/{id}(id=${music.id})}" method="post" th:object="${music}" id="editForm">
+
+                    <div class="mb-3 mx-2 fw-bold">
+                        <label class="form-label ms-2">Title</label>
+                        <input type="text" class="form-control" th:field="*{title}" placeholder="제목">
+                    </div>
+
+                    <div class="mb-3 mx-2 fw-bold">
+                        <label class="form-label ms-2">Artist</label>
+                        <input type="text" class="form-control" th:field="*{artist}" placeholder="가수">
+                    </div>
+
+                    <div class="mb-3 mx-2 fw-bold">
+                        <label class="form-label ms-2">Album</label>
+                        <input type="text" class="form-control" th:field="*{album}" placeholder="앨범">
+                    </div>
+
+                    <div class="mb-3 mx-2 fw-bold">
+                        <label class="form-label ms-2">Release Date</label>
+                        <input type="date" class="form-control" th:field="*{releaseDate}" placeholder="발매일">
+                    </div>
+
+                    <div class="mb-3 mx-2 fw-bold">
+                        <label class="form-label ms-2">Genre</label>
+                        <select class="form-select" th:field="*{genre}"
+                                data-bs-toggle="tooltip"
+                                th:attr="title=${#fields.errors('genre')}"
+                                th:classappend="${#fields.hasErrors('genre')} ? ' is-invalid' : ''">
+                            <option value="">Select genre</option>
+                            <option value="Pop">Pop</option>
+                            <option value="K-Pop">K-Pop</option>
+                            <option value="J-Pop">J-Pop</option>
+                            <option value="Rock">Rock</option>
+                            <option value="Ballad">Ballad</option>
+                            <option value="Jazz">Jazz</option>
+                            <option value="Hip-hop">Hip-hop</option>
+                            <option value="Indie">Indie</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3 mx-2 fw-bold">
+                        <label class="form-label ms-2">Comments</label>
+                        <textarea type="text" class="form-control" th:field="*{comments}" placeholder="코멘트"></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-dark" onclick="document.getElementById('editForm').submit();">
+                    Confirm
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
 

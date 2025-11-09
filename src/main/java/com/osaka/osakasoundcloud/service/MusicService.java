@@ -1,5 +1,6 @@
 package com.osaka.osakasoundcloud.service;
 
+import com.osaka.osakasoundcloud.dto.MusicRequest;
 import com.osaka.osakasoundcloud.dto.MusicResponse;
 import com.osaka.osakasoundcloud.entity.Music;
 import com.osaka.osakasoundcloud.repository.MusicRepository;
@@ -42,4 +43,21 @@ public class MusicService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "존재하지 않는 음악 ID입니다. id:"+id));
         return MusicResponse.from(music);
     }
+    @Transactional
+    public void updateMusic(Long id, MusicRequest musicRequest) {
+        Music music = musicRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "존재하지 않는 번호 입니다. id:" + id));
+        music.updateMusic(
+                musicRequest.getTitle(),
+                musicRequest.getArtist(),
+                musicRequest.getAlbum(),
+                musicRequest.getReleaseDate(),
+                musicRequest.getGenre(),
+                musicRequest.getComments());
+
+        musicRepository.save(music);
+
+    }
+
+
 }
