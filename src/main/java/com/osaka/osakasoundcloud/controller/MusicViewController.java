@@ -38,4 +38,11 @@ public class MusicViewController {
         musicService.updateMusic(id, musicRequest);
         return "redirect:/musics/{id}";
     }
+
+    @DeleteMapping("/{id}")
+    public String deleteMusic
+            (@PathVariable Long id) {
+        musicService.deleteMusic(id);
+        return "redirect:/musics";
+    }
 }
