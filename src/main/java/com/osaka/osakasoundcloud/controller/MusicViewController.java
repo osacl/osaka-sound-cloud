@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -32,13 +31,11 @@ public class MusicViewController {
     }
 
     @PostMapping("/{id}")
-    public String musicUpdate
+    public String updateMusic
             (@PathVariable Long id,
              @ModelAttribute("music") MusicRequest musicRequest
              ) {
         musicService.updateMusic(id, musicRequest);
         return "redirect:/musics/{id}";
     }
-
-
 }

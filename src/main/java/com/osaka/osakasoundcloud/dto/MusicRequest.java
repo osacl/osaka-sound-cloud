@@ -1,11 +1,10 @@
 package com.osaka.osakasoundcloud.dto;
 
 import lombok.Data;
-import lombok.Getter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
-@Getter
 @Data
 public class MusicRequest {
 
@@ -15,6 +14,4 @@ public class MusicRequest {
     private LocalDate releaseDate;
     private String genre;
     private String comments;
-
-
 }

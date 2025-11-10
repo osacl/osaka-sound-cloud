@@ -43,6 +43,7 @@ public class MusicService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "존재하지 않는 음악 ID입니다. id:" + id));
         return MusicResponse.from(music);
     }
+
     @Transactional
     public void updateMusic(Long id, MusicRequest musicRequest) {
         Music music = musicRepository.findById(id)
@@ -54,10 +55,5 @@ public class MusicService {
                 musicRequest.getReleaseDate(),
                 musicRequest.getGenre(),
                 musicRequest.getComments());
-
-        musicRepository.save(music);
-
     }
-
-
 }
