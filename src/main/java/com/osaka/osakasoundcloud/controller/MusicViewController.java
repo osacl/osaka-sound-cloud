@@ -1,13 +1,13 @@
 package com.osaka.osakasoundcloud.controller;
 
+import com.osaka.osakasoundcloud.dto.MusicRequest;
 import com.osaka.osakasoundcloud.dto.MusicResponse;
 import com.osaka.osakasoundcloud.service.MusicService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @Controller
@@ -28,5 +28,14 @@ public class MusicViewController {
         MusicResponse music = musicService.findById(id);
         model.addAttribute("music", music);
         return "musicEach";
+    }
+
+    @PostMapping("/{id}")
+    public String updateMusic
+            (@PathVariable Long id,
+             @ModelAttribute("music") MusicRequest musicRequest
+             ) {
+        musicService.updateMusic(id, musicRequest);
+        return "redirect:/musics/{id}";
     }
 }
