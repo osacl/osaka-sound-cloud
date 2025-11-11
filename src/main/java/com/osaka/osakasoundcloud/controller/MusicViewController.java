@@ -38,4 +38,26 @@ public class MusicViewController {
         musicService.updateMusic(id, musicRequest);
         return "redirect:/musics/{id}";
     }
+
+    // 노래 등록
+    @GetMapping("/new")
+    public String newForm() {
+        return "musicForm"; // templates/musicForm.html
+    }
+
+
+    @PostMapping
+    public String registerFromForm(
+            @RequestParam String title,
+            @RequestParam String artist,
+            @RequestParam String album,
+            @RequestParam
+            @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
+            java.time.LocalDate releaseDate,
+            @RequestParam String genre,
+            @RequestParam String comments
+    ) {
+        musicService.register(title, artist, album, releaseDate, genre, comments);
+        return "redirect:/musics";
+    }
 }

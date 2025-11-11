@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Transactional(readOnly = true)
@@ -55,5 +56,24 @@ public class MusicService {
                 musicRequest.getReleaseDate(),
                 musicRequest.getGenre(),
                 musicRequest.getComments());
+    }
+
+    @Transactional
+    public Music register(String title,
+                          String artist,
+                          String album,
+                          LocalDate releaseDate,
+                          String genre,
+                          String comments) {
+
+        Music music = Music.builder()
+                .title(title)
+                .artist(artist)
+                .album(album)
+                .releaseDate(releaseDate)
+                .genre(genre)
+                .comments(comments)
+                .build();
+        return musicRepository.save(music);
     }
 }

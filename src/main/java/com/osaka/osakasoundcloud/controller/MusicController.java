@@ -1,14 +1,13 @@
 package com.osaka.osakasoundcloud.controller;
 
+import com.osaka.osakasoundcloud.dto.MusicRequest;
 import com.osaka.osakasoundcloud.dto.MusicResponse;
 import com.osaka.osakasoundcloud.entity.Music;
 import com.osaka.osakasoundcloud.service.MusicService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,4 +30,19 @@ public class MusicController {
 //        Music music = musicService.findById(id);
 //        return ResponseEntity.ok(MusicResponse.from(music));
 //    }
+
+    //  등록
+    @PostMapping
+    public ResponseEntity<MusicResponse> create(@RequestBody @Valid MusicRequest req) {
+        Music saved = musicService.register(
+                req.getTitle(),
+                req.getArtist(),
+                req.getAlbum(),
+                req.getReleaseDate(),
+                req.getGenre(),
+                req.getComments()
+        );
+
+        return ResponseEntity.ok(MusicResponse.from(saved));
+    }
 }
