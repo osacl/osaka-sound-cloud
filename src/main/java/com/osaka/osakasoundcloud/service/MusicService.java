@@ -59,6 +59,13 @@ public class MusicService {
     }
 
     @Transactional
+    public void deleteMusic(Long id) {
+        Music music = musicRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "존재하지 않는 번호 입니다. id:" + id));
+        musicRepository.delete(music);
+    }
+
+    @Transactional
     public Music register(String title,
                           String artist,
                           String album,

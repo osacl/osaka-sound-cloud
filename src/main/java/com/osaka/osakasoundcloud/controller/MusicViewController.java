@@ -39,6 +39,13 @@ public class MusicViewController {
         return "redirect:/musics/{id}";
     }
 
+    @DeleteMapping("/{id}")
+    public String deleteMusic
+            (@PathVariable Long id) {
+        musicService.deleteMusic(id);
+        return "redirect:/musics";
+    }
+
     // 노래 등록
     @GetMapping("/new")
     public String newForm() {
