@@ -2,9 +2,7 @@ package com.osaka.osakasoundcloud.controller;
 
 import com.osaka.osakasoundcloud.dto.MusicRequest;
 import com.osaka.osakasoundcloud.dto.MusicResponse;
-import com.osaka.osakasoundcloud.entity.Music;
 import com.osaka.osakasoundcloud.service.MusicService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

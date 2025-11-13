@@ -9,20 +9,26 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Builder
 @Getter
+@Builder
 public class MusicResponse {
 
     private Long id;
+
     private String title;
+
     private String artist;
+
     private String album;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate releaseDate;
+
     private String genre;
+
     private String comments;
+
     private LocalDateTime createdDate;
 
     public static MusicResponse from(Music music) {

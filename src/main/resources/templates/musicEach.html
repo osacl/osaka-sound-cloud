@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>OsakaSoundCloud</title>
-<!-- 상세조회면 title 이름도 바뀌어야할까요?-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
@@ -16,18 +15,18 @@
     <p class="bs-primary-text-bg">Title <br><span th:text="${music.title}" class="fw-bold fs-3">title</span></p>
     <p>Artist: <br><span th:text="${music.artist}" class="fw-bold fs-3">artist</span></p>
     <p>Album: <br><span th:text="${music.album}" class="fw-bold fs-3">album</span></p>
-        <div class="row gx-5">
-            <div class="col-6">
-                <p>
-                    Release Date: <br><span th:text="${music.releaseDate}" class="fw-bold fs-3">release date</span>
-                </p>
-            </div>
-            <div class="col-6">
-                <p>
-                    Genre: <br><span th:text="${music.genre}" class="fw-bold fs-3">genre</span>
-                </p>
-            </div>
+    <div class="row gx-5">
+        <div class="col-6">
+            <p>
+                Release Date: <br><span th:text="${music.releaseDate}" class="fw-bold fs-3">release date</span>
+            </p>
         </div>
+        <div class="col-6">
+            <p>
+                Genre: <br><span th:text="${music.genre}" class="fw-bold fs-3">genre</span>
+            </p>
+        </div>
+    </div>
 
     <p class="mb-0">Comments: </p><br>
     <div class="d-flex justify-content-start mb-2">
@@ -41,7 +40,7 @@
         <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
     </div>
 </div>
-  
+
 <!-- 수정 모달 -->
 <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
@@ -51,10 +50,7 @@
                 <button type="button" class="btn-close me-1" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                    <!--
-                    <form th:action="@{|/musics/${music.id}|}" method="post" th:object="${music}">
-                    -->
-                    <form th:action="@{/musics/{id}(id=${music.id})}" method="post" th:object="${music}" id="editForm">
+                <form th:action="@{/musics/{id}(id=${music.id})}" method="post" th:object="${music}" id="editForm">
 
                     <div class="mb-3 mx-2 fw-bold">
                         <label class="form-label ms-2">Title</label>
@@ -102,18 +98,18 @@
             </div>
 
             <div class="modal-footer">
-                <button class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-outline-dark" data-bs-dismiss="modal">
+                    Cancel
+                </button>
                 <button class="btn btn-dark" onclick="document.getElementById('editForm').submit();">
                     Confirm
                 </button>
             </div>
-
         </div>
     </div>
 </div>
 
 <!--삭제 모달-->
-
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -130,19 +126,18 @@
 
             <div class="modal-footer">
                 <button class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
-                <button class="btn btn-danger" onclick="document.getElementById('deleteForm').submit();"
+                <button class="btn btn-danger"
+                        onclick="document.getElementById('deleteForm').submit();"
                         type="button"
                         id="deleteBtn"
-                        title="정말로 삭제하시겠습니까?"
-                        >
+                        title="정말로 삭제하시겠습니까?">
                     Confirm
                 </button>
             </div>
-
         </div>
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
