@@ -3,9 +3,11 @@ package com.osaka.osakasoundcloud.controller;
 import com.osaka.osakasoundcloud.dto.MusicRequest;
 import com.osaka.osakasoundcloud.dto.MusicResponse;
 import com.osaka.osakasoundcloud.service.MusicService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,11 +49,16 @@ public class MusicViewController {
     }
 
     @GetMapping("/new")
-    public String newForm() {
+    public String newForm(Model model) {
+        model.addAttribute("musicRequest", new MusicRequest());
         return "musicForm";
     }
 
-    @PostMapping String save(@ModelAttribute MusicRequest musicRequest) {
+    @PostMapping String save(@Valid @ModelAttribute MusicRequest musicRequest, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "musicForm";
+        }
+        // TODO: 반환값 활용
         musicService.save(musicRequest);
         return "redirect:/musics";
     }
