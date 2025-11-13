@@ -33,16 +33,8 @@ public class MusicController {
 
     //  등록
     @PostMapping
-    public ResponseEntity<MusicResponse> create(@RequestBody @Valid MusicRequest req) {
-        Music saved = musicService.register(
-                req.getTitle(),
-                req.getArtist(),
-                req.getAlbum(),
-                req.getReleaseDate(),
-                req.getGenre(),
-                req.getComments()
-        );
-
-        return ResponseEntity.ok(MusicResponse.from(saved));
+    public ResponseEntity<MusicResponse> create(@RequestBody MusicRequest musicRequest) {
+        MusicResponse musicResponse = musicService.save(musicRequest);
+        return ResponseEntity.ok(musicResponse);
     }
 }

@@ -46,25 +46,13 @@ public class MusicViewController {
         return "redirect:/musics";
     }
 
-    // 노래 등록
     @GetMapping("/new")
     public String newForm() {
-        return "musicForm"; // templates/musicForm.html
+        return "musicForm";
     }
 
-
-    @PostMapping
-    public String registerFromForm(
-            @RequestParam String title,
-            @RequestParam String artist,
-            @RequestParam String album,
-            @RequestParam
-            @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
-            java.time.LocalDate releaseDate,
-            @RequestParam String genre,
-            @RequestParam String comments
-    ) {
-        musicService.register(title, artist, album, releaseDate, genre, comments);
+    @PostMapping String save(@ModelAttribute MusicRequest musicRequest) {
+        musicService.save(musicRequest);
         return "redirect:/musics";
     }
 }
