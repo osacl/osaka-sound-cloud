@@ -20,13 +20,14 @@ public class MusicViewController {
     private final MusicService musicService;
 
     @GetMapping
-    public String musicList(Model model){
+    public String musicList(Model model) {
         List<MusicResponse> musics = musicService.findAll();
         model.addAttribute("musics", musics);
         return "musicList";
     }
+
     @GetMapping("/{id}")
-    public String musicEach(@PathVariable Long id, Model model){
+    public String musicEach(@PathVariable Long id, Model model) {
         MusicResponse music = musicService.findById(id);
         model.addAttribute("music", music);
         return "musicEach";
@@ -36,7 +37,7 @@ public class MusicViewController {
     public String updateMusic
             (@PathVariable Long id,
              @ModelAttribute("music") MusicRequest musicRequest
-             ) {
+            ) {
         musicService.updateMusic(id, musicRequest);
         return "redirect:/musics/{id}";
     }
@@ -54,12 +55,12 @@ public class MusicViewController {
         return "musicForm";
     }
 
-    @PostMapping String save(@Valid @ModelAttribute MusicRequest musicRequest, BindingResult bindingResult) {
+    @PostMapping
+    String save(@Valid @ModelAttribute MusicRequest musicRequest, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "musicForm";
         }
-        // TODO: 반환값 활용
-        musicService.save(musicRequest);
-        return "redirect:/musics";
+        MusicResponse saved = musicService.save(musicRequest);
+        return "redirect:/musics/" + saved.getId();
     }
 }
