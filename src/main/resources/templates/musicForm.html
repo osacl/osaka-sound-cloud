@@ -5,6 +5,16 @@
     <title>OsakaSoundCloud</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
+
+        .bagel-fat-one-regular {
+            font-family: "Bagel Fat One", system-ui;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
 </head>
 <body>
 
@@ -12,7 +22,7 @@
 <div th:replace="fragments/navigation :: nav"></div>
 
 <main class="container mt-5">
-    <h2>Add New Music 🎵</h2>
+    <h2 class="bagel-fat-one-regular">Add New Music 🎵</h2>
 
     <form th:action="@{/musics}" th:object="${musicRequest}" method="post">
         <div class="mb-3">
