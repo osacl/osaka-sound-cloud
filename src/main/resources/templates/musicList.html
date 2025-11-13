@@ -18,7 +18,8 @@
 
     <section>
         <article>
-            <table class="table table-hover caption-top table-responsive">
+            <table class="table caption-top table-responsive"
+                   th:classappend="${musics.size() > 0} ? ' table-hover' : ''">
                 <thead class="table-secondary">
                 <tr>
                     <th>Title</th>
