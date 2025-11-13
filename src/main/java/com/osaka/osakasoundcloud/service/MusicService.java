@@ -63,4 +63,10 @@ public class MusicService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "존재하지 않는 번호 입니다. id:" + id));
         musicRepository.delete(music);
     }
+
+    @Transactional
+    public MusicResponse save(MusicRequest musicRequest) {
+        Music saved = musicRepository.save(musicRequest.toEntity());
+        return MusicResponse.from(saved);
+    }
 }
