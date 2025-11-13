@@ -1,6 +1,5 @@
 package com.osaka.osakasoundcloud.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,9 +9,9 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 @Getter
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "musics")
 public class Music extends BaseEntity {
@@ -36,7 +35,6 @@ public class Music extends BaseEntity {
     private String genre;
 
     @Lob // @Lob을 붙이면 JPA가 자동으로 해당 DB에 맞는 대용량 문자 타입(CLOB or TEXT)으로 매핑합니다.
-    @Column(nullable = true)
     private String comments;
 
     public void updateMusic(String title,

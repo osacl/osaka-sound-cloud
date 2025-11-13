@@ -3,10 +3,15 @@ package com.osaka.osakasoundcloud.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.osaka.osakasoundcloud.entity.Music;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class MusicRequest {
 
     @NotBlank(message = "제목은 필수 입력값입니다.")
