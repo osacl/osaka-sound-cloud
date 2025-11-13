@@ -2,13 +2,13 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>OsakaSoundCloud · Add</title><!--타이틀 변경-->
+    <title>OsakaSoundCloud</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>
 <main class="container mt-5">
-    <h2 class="mb-4 fw-bold">Add Music Form</h2><!--타이틀 변경-->
+    <h2>Add New Music 🎵</h2>
 
     <form th:action="@{/musics}" th:object="${musicRequest}" method="post">
         <div class="mb-3">
